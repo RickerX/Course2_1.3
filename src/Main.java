@@ -11,7 +11,7 @@ import Transport.Train;
 
 public class Main {
     public static void separation() {
-        System.out.println("==============================");
+        System.out.println("=============================");
     }
     public static void main(String[] args) {
         Car lada = new Car(" ", " ", 0, "", "желтого", 0, "механика", "универсал", "а000аа750", 4,true,null,null,-10);
