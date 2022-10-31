@@ -9,17 +9,8 @@ public class Train extends Transport {
 
     public Train(String brand, String model, int yearOfRelease, String country, String color, int maxSpeed, double thePriceOfTheTrip, String travelTime, String nameOfTheDepartureStation, String finalStop, int numberOfWagons) {
         super(brand, model, yearOfRelease, country, color, maxSpeed);
-        if (thePriceOfTheTrip >= 1) {
-            this.thePriceOfTheTrip = thePriceOfTheTrip;
-        } else {
-            this.thePriceOfTheTrip = 500;
-        }
-        this.travelTime = travelTime;
-        if (travelTime != null || !travelTime.isEmpty() || !travelTime.isBlank()) {
-            this.travelTime = travelTime;
-        } else {
-            this.travelTime = "время поездки не указано";
-        }
+        this.thePriceOfTheTrip = validOrDefaultThePriceOfTheTrip(thePriceOfTheTrip);
+        this.travelTime = validOrDefaultTravelTime(travelTime);
         this.nameOfTheDepartureStation = nameOfTheDepartureStation;
         this.finalStop = finalStop;
         this.numberOfWagons = numberOfWagons;
@@ -68,5 +59,20 @@ public class Train extends Transport {
     @Override
     public void refill() {
         System.out.println(" нужно заправлять дизелем ");
+    }
+
+    private static double validOrDefaultThePriceOfTheTrip(double thePriceOfTheTrip) {
+        if (thePriceOfTheTrip >= 1) {
+            return thePriceOfTheTrip;
+        } else {
+            return  500;
+        }
+    }
+    private static String validOrDefaultTravelTime(String travelTime) {
+        if (travelTime != null || !travelTime.isEmpty() || !travelTime.isBlank()) {
+            return travelTime;
+        } else {
+            return  "время поездки не указано";
+        }
     }
 }

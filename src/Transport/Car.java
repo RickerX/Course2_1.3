@@ -14,32 +14,11 @@ public class Car extends Transport {
 
     public Car(String brand,String model,int yearOfRelease,String country,String color,double engineVolume,String transmission,String bodyType,String registrationNumber,int numberOfSeats,boolean tires, Key key, Insurance insurance,int maxSpeed) {
         super(brand,model,yearOfRelease,country,color,maxSpeed);
-
-        if (engineVolume == 0 || engineVolume < 0) {
-            this.engineVolume = 1.5;
-        } else {
-            this.engineVolume = engineVolume;
-        }
-        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
-            this.transmission = "Коробка передач не опознана";
-        } else {
-            this.transmission = transmission;
-        }
-        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
-            this.bodyType = "кузов не опознан";
-        } else {
-            this.bodyType = bodyType;
-        }
-        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()) {
-            this.registrationNumber = "номер не опознан";
-        } else {
-            this.registrationNumber = registrationNumber;
-        }
-        if (numberOfSeats == 0 || numberOfSeats < 0) {
-            this.numberOfSeats = 4;
-        } else {
-            this.numberOfSeats = numberOfSeats;
-        }
+        this.engineVolume = validOrDefaultEngineVolume(engineVolume);
+        this.transmission = validOrDefaultTransmission(transmission);
+        this.bodyType = validOrDefaultBodyType(bodyType);
+        this.registrationNumber = validOrDefaultRegistrationNumber(registrationNumber);
+        this.numberOfSeats = validOrDefaultNumberOfSeats(numberOfSeats);
         if (key == null) {
             this.key = new Key();
         } else {
@@ -203,4 +182,42 @@ public class Car extends Transport {
             }
         }
     }
+
+    private static double validOrDefaultEngineVolume(double engineVolume) {
+        if (engineVolume == 0 || engineVolume < 0) {
+            return 1.5;
+        } else {
+            return engineVolume;
+        }
+    }
+
+    private static String validOrDefaultTransmission(String transmission) {
+        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+            return  "Коробка передач не опознана";
+        } else {
+            return transmission;
+        }
+    }
+    private static String validOrDefaultBodyType(String bodyType) {
+        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
+            return  "кузов не опознан";
+        } else {
+            return bodyType;
+        }
+    }
+    private static String validOrDefaultRegistrationNumber(String registrationNumber) {
+        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()) {
+            return  "номер не опознан";
+        } else {
+            return registrationNumber;
+        }
+    }
+    private static int validOrDefaultNumberOfSeats(int numberOfSeats) {
+        if (numberOfSeats == 0 || numberOfSeats < 0) {
+            return 4;
+        } else {
+            return numberOfSeats;
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ public class Main {
         System.out.println("==============================");
     }
     public static void main(String[] args) {
-        Car lada = new Car(" ", " ", 0, "", "желтого", 0, "механика", "универсал", "а000аа750", 4,true,null,null,150);
+        Car lada = new Car(" ", " ", 0, "", "желтого", 0, "механика", "универсал", "а000аа750", 4,true,null,null,-10);
         Car audi = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германии", "черный", 3.0, "робот", "седан", "о000оо77", 4, false,null,null,180);
         Car bmw = new Car("BMW", "Z8", 2021, "Гремании", "черный", 3.0, "робот", "кабриолет", "в999вв198", 2, true,null,null,90);
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2018, "Южной Корее", "красный", 2.4, "автомат", "кроссовер", "л888лл50", 4, true,null,null,100);
@@ -36,7 +36,7 @@ public class Main {
         lastochka.refill();
         printInfoTrain(leningrad);
         leningrad.refill();
-        Bus volvoBus = new Bus("Вольво", "А1", 2021, "Швеция", "белый", 90);
+        Bus volvoBus = new Bus("", "", -100, "", "", -10);
         Bus mersedesBus = new Bus("Мерседес", "А2", 2020, "Германия", "черный", 100);
         Bus scaniaBus = new Bus("Скания", "А3", 2019, "Дания", "синий", 120);
         separation();

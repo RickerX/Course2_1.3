@@ -1,44 +1,20 @@
 package Transport;
 
 public abstract class Transport {
-   private final String brand;
-   private final String model;
-   private final int yearOfRelease;
-   private final String country;
-   private final String color;
-   private final int maxSpeed;
+    private final String brand;
+    private final String model;
+    private final int yearOfRelease;
+    private final String country;
+    private final String color;
+    private final int maxSpeed;
 
     public Transport(String brand, String model, int yearOfRelease, String country, String color, int maxSpeed) {
-        if (brand == null || brand.isEmpty() || brand.isBlank()) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null || model.isBlank() || model.isBlank()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (yearOfRelease == 0 || yearOfRelease < 0) {
-            this.yearOfRelease = 2000;
-        } else {
-            this.yearOfRelease = yearOfRelease;
-        }
-        if (country == null || country.isEmpty() || country.isBlank()) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
-        if (color != null || !color.isEmpty()) {
-            this.color = color;
-        } else {
-            this.color = "белый";
-        }
-        if (maxSpeed >= 1) {
-            this.maxSpeed = maxSpeed;
-        } else {
-            this.maxSpeed = 90;
-        }
+        this.brand = validOrDefaultBrand(brand);
+        this.model = validOrDefaultModel(model);
+        this.yearOfRelease = validOrDefaultYearOfRelease(yearOfRelease);
+        this.country = validOrDefaultCountry(country);
+        this.color = validOrDefaultColor(color);
+        this.maxSpeed = validOrDefaultMaxSpeed(maxSpeed);
     }
 
     public String getBrand() {
@@ -66,4 +42,50 @@ public abstract class Transport {
     }
 
     public abstract void refill();
+    private static String validOrDefaultModel(String model) {
+        if (model == null || model.isBlank() || model.isBlank()) {
+            return "default";
+        } else {
+            return model;
+        }
+    }
+
+    private static String validOrDefaultBrand(String brand) {
+        if (brand == null || brand.isEmpty() || brand.isBlank()) {
+            return  "default";
+        } else {
+            return brand;
+        }
+    }
+
+    private static int validOrDefaultYearOfRelease  (int yearOfRelease) {
+        if (yearOfRelease == 0 || yearOfRelease < 0) {
+            return 2000;
+        } else {
+            return yearOfRelease;
+        }
+    }
+    private static String validOrDefaultCountry(String country) {
+        if (country == null || country.isEmpty() || country.isBlank()) {
+            return  "default";
+        } else {
+            return country;
+        }
+    }
+
+    private static String validOrDefaultColor(String color) {
+        if (color == null || color.isEmpty() || color.isBlank()) {
+            return "белый";
+        } else {
+            return color;
+        }
+    }
+
+    private static int validOrDefaultMaxSpeed(int maxSpeed) {
+        if (maxSpeed > 0) {
+            return maxSpeed;
+        } else {
+            return 90;
+        }
+    }
 }
